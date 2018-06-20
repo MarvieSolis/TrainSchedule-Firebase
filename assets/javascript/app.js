@@ -21,11 +21,11 @@ var firstTrain = 0;
 var freq = 0;
 var currentTime = moment();
 
-
 // Grabbing user input
 
 $("#newTrain").on("click", function(event) {
     event.preventDefault();
+
 
     // Inputs into variables
     trainName = $("#nameInput").val().trim();
@@ -75,7 +75,7 @@ database.ref().on("child_added", function(childSnapshot) {
     var Interval = childSnapshot.val().freq;
 
     
-    $("#schedulePanel>tbody").append("<tr><td> >   " + Name  +  "</td><td>" + Place +  "</td><td>" + Interval + "</td><td>" + nextTrain + "</td><td>" + newTrain + " min</td></tr>");
+    $("#schedulePanel>tbody").append("<tr><td>" + Name  +  "</td><td>" + Place +  "</td><td> every " + Interval + " min </td><td>" + nextTrain + "</td><td>" + newTrain + " min</td></tr>");
 
 
     // Error check
@@ -89,6 +89,9 @@ database.ref().on("child_added", function(childSnapshot) {
 setInterval(function(){
     $("#clock").html(moment(moment()).format("hh:mm:ss a"));
 }, 1000);
+
+
+
 
 
 

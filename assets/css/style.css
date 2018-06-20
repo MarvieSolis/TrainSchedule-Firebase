@@ -33,12 +33,16 @@ body {
 
 th {
     padding: 10px;
+    color: #82A7D6;
 }
 
 tr {
     padding: 10px;
 }
 
+td {
+    padding: 10px;
+}
 
 h2 {
     text-align: center;
@@ -62,14 +66,43 @@ h3 {
     border-style: double;
 }
 
+.form-control {
+    background-color:#444;
+    color: #FFF;
+}
+
+
 #myform {
     background-color: black;
     padding: 10px;
 }
 
 label {
-    color: #FEF265;
+    color: #82A7D6;
     font-weight: bold;
+}
+
+#newTrain {
+    color: #FEF265;
+}
+
+#addTrainField {
+    padding-top: 10px;
+}
+
+#footer {
+    background-color: #222;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.footerText {
+    text-align: center;
+    color: #FEF265;
+    font-family: 'Lobster', cursive;
+    font-size: 15px;
+
+
 }
 
 

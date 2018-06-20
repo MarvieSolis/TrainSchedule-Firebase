@@ -90,21 +90,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table-responsive-md table-striped table-dark" id="addTrainPanel">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <h2>Add a train</h2>
-                                </th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     <form id="myform">
                         <div class="form-group">
+                            <h2 id="addTrainField">Add a train</h2>
                             <label for="trainName">Train Name</label>
                             <input type="trainName" class="form-control" id="nameInput" placeholder="Train Name">
                         </div>
@@ -117,11 +105,23 @@
                             <input type="firstTimeTrain" class="form-control" id="firstInput" placeholder="Initial Train">
                         </div>
                         <div class="form-group">
-                            <label for="trainFrequency">Frequency (min)</label>
-                            <input type="trainFrequency" class="form-control" id="frequencyInput" placeholder="i.e. 15min">
+                            <label for="trainFrequency">Frequency</label>
+                            <input type="trainFrequency" class="form-control" id="frequencyInput" placeholder="i.e. 15">
                         </div>
                         <button type="submit" class="btn btn-secondary" id="newTrain">Submit</button>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <!--FOOTER-->
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12">
+                    <div id="footer">
+                        <p class="footerText">Created by: Marvie Solis</p>
+                        <p class="footerText">&copy;Copyright 2018</p>
+                    </div>
                 </div>
             </div>
         </div>
