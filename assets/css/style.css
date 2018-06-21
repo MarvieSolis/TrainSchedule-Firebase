@@ -102,8 +102,20 @@ label {
     color: #FEF265;
     font-family: 'Lobster', cursive;
     font-size: 15px;
-
-
 }
+
+.modal-backdrop {
+    z-index: -1;
+    background-color: black !important;
+  }
+
+.edit {
+    background-color: #325886;
+}
+
+.remove {
+    background-color: #325886;
+}
+
 
 

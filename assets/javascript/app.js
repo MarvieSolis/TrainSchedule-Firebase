@@ -21,6 +21,7 @@ var firstTrain = 0;
 var freq = 0;
 var currentTime = moment();
 var key = "";
+var passover = "";
 
 // Grabbing user input
 
@@ -79,7 +80,7 @@ database.ref().on("child_added", function (childSnapshot) {
     var Interval = childSnapshot.val().freq;
 
 
-    $("#schedulePanel>tbody").append("<tr><td>" + Name + "</td><td>" + Place + "</td><td> every " + Interval + " min </td><td>" + nextTrain + "</td><td>" + newTrain + " min</td><td> <button class='edit' id=" + key + ">+</button> <button class='remove' id=" + key + ">X</button></td></tr>");
+    $("#schedulePanel>tbody").append("<tr><td>" + Name + "</td><td>" + Place + "</td><td> every " + Interval + " min </td><td>" + nextTrain + "</td><td>" + newTrain + " min</td><td> <button class='edit' id=" + key + " data-toggle='modal' data-target='#exampleModal'><i class='fas fa-edit' aria-hidden='true'></i></button> <button class='remove' id=" + key + "><i class='fa fa-trash' aria-hidden='true'></i></button></td></tr>");
 
 
     // Error check
@@ -109,6 +110,37 @@ $(document).on('click', ".remove", function () {
     }
 });
 
+
+// edit
+$(document).on('click', ".edit", function () {
+
+    passover = $(this).attr("id");
+
+});
+
+// Edit save
+$(document).on('click', "#editButton", function () {
+
+trainName = $("#nameEdit").val().trim();
+
+destination = $("#destinationEdit").val().trim();
+
+firstTrain = $("#firstEdit").val().trim();
+
+freq = $("#frequencyEdit").val().trim();
+
+database.ref(passover).update({
+    trainName: trainName,
+    destination: destination,
+    firstTrain: firstTrain,
+    freq: freq
+});
+
+
+location.reload();
+
+
+});
 
 
 
