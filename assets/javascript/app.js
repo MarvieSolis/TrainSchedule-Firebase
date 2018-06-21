@@ -20,10 +20,11 @@ var destination = "";
 var firstTrain = 0;
 var freq = 0;
 var currentTime = moment();
+var key = "";
 
 // Grabbing user input
 
-$("#newTrain").on("click", function(event) {
+$("#newTrain").on("click", function (event) {
     event.preventDefault();
 
 
@@ -35,6 +36,8 @@ $("#newTrain").on("click", function(event) {
     firstTrain = $("#firstInput").val().trim();
 
     freq = $("#frequencyInput").val().trim();
+
+
 
 
 
@@ -57,7 +60,7 @@ $("#newTrain").on("click", function(event) {
 });
 
 // Time conversions and calculations
-database.ref().on("child_added", function(childSnapshot) {
+database.ref().on("child_added", function (childSnapshot) {
 
     var freq = childSnapshot.val().freq;
     var NewFirstTrain = moment(firstTrain, "HH:mm").subtract("1, years");
@@ -65,6 +68,7 @@ database.ref().on("child_added", function(childSnapshot) {
     var remainder = difference % freq;
     var newTrain = freq - remainder;
     var nextTrain = moment().add(newTrain, "minutes").format("hh:mm a");
+    var key = childSnapshot.key;
 
 
 
@@ -74,21 +78,36 @@ database.ref().on("child_added", function(childSnapshot) {
     var Place = childSnapshot.val().destination;
     var Interval = childSnapshot.val().freq;
 
-    
-    $("#schedulePanel>tbody").append("<tr><td>" + Name  +  "</td><td>" + Place +  "</td><td> every " + Interval + " min </td><td>" + nextTrain + "</td><td>" + newTrain + " min</td></tr>");
+
+    $("#schedulePanel>tbody").append("<tr><td>" + Name + "</td><td>" + Place + "</td><td> every " + Interval + " min </td><td>" + nextTrain + "</td><td>" + newTrain + " min</td><td> <button class='edit' id=" + key + ">+</button> <button class='remove' id=" + key + ">X</button></td></tr>");
 
 
     // Error check
-}, function(errorObject) {
+}, function (errorObject) {
     console.log("Errors: " + errorObject.code);
-  });
+});
 
 
 
 // Clock in header
-setInterval(function(){
+setInterval(function () {
     $("#clock").html(moment(moment()).format("hh:mm:ss a"));
 }, 1000);
+
+// remove
+$(document).on('click', ".remove", function () {
+
+    var choice = confirm("Are you sure you want to remove this train? ):");
+
+    if (choice === true) {
+        var thisKey = $(this).attr("id");
+        database.ref().child(thisKey).remove();
+        location.reload();
+    }
+    else {
+        return false;
+    }
+});
 
 
 
