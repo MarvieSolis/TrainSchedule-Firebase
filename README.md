@@ -18,5 +18,5 @@ Using this website and upon inspection of the code can help people understand ho
 People can learn more about using jQuery by looking through websites such as [jQuery.com](https://www.jquery.com/) or [w3schools](https://www.w3schools.com/jquery/default.asp). To learn more about Firebase, visit this page for [Firebase](https://firebase.google.com/).
 
 
-##The Site is live!
+## The Site is live!
 [Click here to see the page!](https://marviesolis.github.io/TrainSchedule-Firebase/)
